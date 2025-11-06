@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+# For pipenv users
+Pipfile.lock
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# FastAPI specific
+# Uvicorn/Gunicorn related files
+.uvicorn/
+.gunicorn/
+
+# Configuration files that may contain sensitive data
+# (e.g., API keys, database credentials)
+# Consider using environment variables or a separate config management system
+# instead of ignoring these if they are essential for deployment.
+config.ini
+.env
+.flaskenv
+*.json.example # If you have example config files
+
+# Test reports
+.pytest_cache/
+htmlcov/
+.coverage
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
