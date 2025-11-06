@@ -37,7 +37,7 @@ Desenvolver uma **API back-end** capaz de gerenciar:
 
 ---
 
-## Requisitos de Produto (CRUD Básico)
+## Produto (CRUD Básico)
 
 ### Rotas
 
@@ -48,6 +48,45 @@ Desenvolver uma **API back-end** capaz de gerenciar:
 | **GET** | `/produtos/{id}` | Detalhar produto específico | **Todos** |
 | **PUT** | `/produtos/{id}` | Atualizar produto | Apenas **Produtor dono** |
 | **DELETE** | `/produtos/{id}` | Remover produto | Apenas **Produtor dono** |
+
+---
+
+## Requisitos e Validações
+
+### Usuário
+
+| Campo | Tipo | Requisitos / Validações |
+|--------|------|--------------------------|
+| **nome** | String | Obrigatório. Mínimo 3 caracteres. |
+| **email** | String | Obrigatório. Deve ter formato válido e ser único. |
+| **senha** | String | Obrigatório. Mínimo 8 caracteres, contendo letras e números. |
+| **tipo** | String | Obrigatório. Deve ser um dos seguintes: `produtor`, `comprador`, `admin`. |
+| **localizacao** | String | Opcional. Deve ter no máximo 100 caracteres. |
+
+**Regras adicionais:**
+- O e-mail não pode se repetir entre usuários.  
+- A senha deve ser armazenada **com hashing seguro (ex: bcrypt)**.  
+- Apenas **administradores** podem excluir outros usuários.  
+
+---
+
+### Produto
+
+| Campo | Tipo | Requisitos / Validações |
+|--------|------|--------------------------|
+| **nome** | String | Obrigatório. Entre 3 e 100 caracteres. |
+| **descricao** | String | Opcional. Máximo 500 caracteres. |
+| **preco** | Float | Obrigatório. Deve ser maior que 0. |
+| **quantidade** | Integer | Obrigatório. Deve ser maior ou igual a 0. |
+| **categoria** | String | Obrigatório. Deve ser uma das categorias válidas (ex: `frutas`, `grãos`, `laticínios`, etc.). |
+| **localizacao** | String | Opcional. Cidade ou região do produto. |
+| **produtor_id** | Integer | Obrigatório. Referência ao usuário do tipo **produtor**. |
+
+**Regras adicionais:**
+- Apenas o **produtor dono do produto** pode alterá-lo ou removê-lo.  
+- O campo **preço** deve aceitar até duas casas decimais.  
+- Não é permitido cadastrar produtos com **quantidade negativa**.  
+- Produtos devem ser automaticamente vinculados ao produtor autenticado no momento do cadastro.  
 
 ---
 
@@ -113,5 +152,6 @@ Desenvolver uma **API back-end** capaz de gerenciar:
   - **SGBD (Banco de Dados)** utilizado (ex: MySQL, PostgreSQL).  
   - **Principais bibliotecas** com suas versões (ex: FastAPI, SQLAlchemy, JWT, etc.).  
 - O README também deve conter instruções de **instalação, execução e testes** da aplicação.
+
 
 
