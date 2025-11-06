@@ -153,5 +153,10 @@ Desenvolver uma **API back-end** capaz de gerenciar:
   - **Principais bibliotecas** com suas versões (ex: FastAPI, SQLAlchemy, JWT, etc.).  
 - O README também deve conter instruções de **instalação, execução e testes** da aplicação.
 
+---
 
+## Links Úteis
 
+- [Docker e Docker Compose — Um guia para iniciantes](https://dev.to/ingresse/docker-e-docker-compose-um-guia-para-iniciantes-48k8)  
+- [Documentação oficial do FastAPI](https://fastapi.tiangolo.com)
+---
