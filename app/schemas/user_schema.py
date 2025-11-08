@@ -38,9 +38,9 @@ class UserUpdate(BaseModel):
     localization: str = Field(max_length=100 ,description="Cidade/Região do usuário")
 
     def to_model(self, user: User) -> User:
-        if user.name: user.name = self.name
-        if user.email: user.email = self.email
-        if user.localization: user.localization = self.localization
+        if self.name: user.name = self.name
+        if self.email: user.email = self.email
+        if self.localization: user.localization = self.localization
 
         return user
 
