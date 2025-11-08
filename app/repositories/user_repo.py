@@ -17,22 +17,22 @@ class UserRepository:
     async def get_user_by_id(self, id: uuid.UUID) -> User | None:
         result = await self.db.execute(select(User).where(User.id == id))
 
-        return result.scalar_one_or_none
+        return result.scalar_one_or_none()
     
     async def get_user_by_email(self, email: str) -> User | None:
         result = await self.db.execute(select(User).where(User.email == email))
         
         return result.scalar_one_or_none()
     
-    async def get_all_users_by_user_type(self, type: UserRole) -> list[User]:
+    """async def get_all_users_by_user_type(self, type: UserRole) -> list[User]:
         result = await self.db.execute(select(User).where(User.userType == type))
 
-        return list(result.scalars.all())
+        return list(result.scalars.all())"""
     
     async def get_all_users(self) -> list[User]:
         result = await self.db.execute(select(User))
 
-        return list(result.scalars.all())
+        return list(result.scalars().all())
     
     async def update_user(self, user: User, id: uuid.UUID):
         await self.db.execute(
@@ -47,6 +47,11 @@ class UserRepository:
 
         await self.db.commit()
 
+        result = await self.db.execute(select(User).where(User.id == id))
+        updated_user = result.scalar_one()
+
+        return updated_user
+
     async def delete_user(self, user: User):
-        await self.db.delete(User)
+        await self.db.delete(user)
         await self.db.commit()
