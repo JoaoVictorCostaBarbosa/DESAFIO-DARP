@@ -37,6 +37,13 @@ class UserUpdate(BaseModel):
     email: EmailStr = Field(description="Email válido")
     localization: str = Field(max_length=100 ,description="Cidade/Região do usuário")
 
+    def to_model(self, user: User) -> User:
+        if user.name: user.name = self.name
+        if user.email: user.email = self.email
+        if user.localization: user.localization = self.localization
+
+        return user
+
 class UserResponse(BaseModel):
     id: uuid.UUID
     name: str
