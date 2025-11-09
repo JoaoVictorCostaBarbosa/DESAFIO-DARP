@@ -117,7 +117,7 @@ chmod +x entrypoint.sh
 
 ### 4. Contrua e rode o docker
 ```bash
-docker-compose ap --build
+docker-compose up --build
 ```
 
 
