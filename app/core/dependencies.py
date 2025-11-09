@@ -5,6 +5,8 @@ from app.repositories.user_repo import UserRepository
 from app.schemas.user_schema import UserResponse
 from app.services.auth_service import AuthService
 from app.services.user_service import UserService
+from app.repositories.product_repo import ProductRepository
+from app.services.product_service import ProductService
 
 from app.core.security import verify_token
 from app.db.session import get_db
@@ -51,3 +53,7 @@ async def get_auth_service(db: AsyncSession = Depends(get_db)) -> AuthService:
 async def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
     user_repo = UserRepository(db)
     return UserService(user_repo)
+
+async def get_product_service(db: AsyncSession = Depends(get_db)) -> ProductService:
+    product_repo = ProductRepository(db)
+    return ProductService(product_repo)
