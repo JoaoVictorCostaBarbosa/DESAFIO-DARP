@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, Enum as sqlalchemyEnum
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.db.base import Base
 from enum import Enum
 import uuid
@@ -18,3 +19,5 @@ class User(Base):
     hash_password = Column(String, index=True, nullable=False)
     userType = Column(sqlalchemyEnum(UserRole), index=True, nullable=False)
     localization = Column(String(100), index=True)
+
+    products = relationship("Product", back_populates="user")
