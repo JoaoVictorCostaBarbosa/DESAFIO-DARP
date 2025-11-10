@@ -88,7 +88,7 @@ A aplicação foi desenvolvida com **FastAPI**, **SQLAlchemy (assíncrono)** e *
 
 ### 1. Clonar o Repositório
 ```bash
-git clone git@github.com:JoaoVictorCostaBarbosa/DESAFIO-DARP.git
+git clone https://github.com/JoaoVictorCostaBarbosa/DESAFIO-DARP.git
 cd DESAFIO-DARP
 ```
 
@@ -123,3 +123,4 @@ docker-compose up --build
 
 #### API disponivel em 'http://localhost:8000'
 #### Documentação automática (Swagger) disponivel em 'http://localhost:8000/docs'
+
